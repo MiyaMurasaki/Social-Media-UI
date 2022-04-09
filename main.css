@@ -48,10 +48,6 @@
   border: 1.5px var(--white) solid;
 }
 
-.icon {
-  width: 2rem;
-}
-
 body {
   width: 100vw;
   display: -webkit-box;
@@ -124,15 +120,32 @@ nav .nav-container .logo-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 10vw;
+  width: 25vw;
   font-size: 1.5rem;
   font-weight: 600;
   color: #000;
 }
 
 nav .nav-container .logo-container .logo {
-  width: 2rem;
+  width: 3.5rem;
   margin: 0rem 0.75rem;
+}
+
+@media screen and (max-width: 600px) {
+  nav .nav-container .logo-container .logo {
+    width: 2.5rem;
+    margin: 0rem 0.25rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav .nav-container .logo-container {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  nav .nav-container .logo-container span {
+    display: none;
+  }
 }
 
 nav .nav-container .search-container {
@@ -209,6 +222,16 @@ nav .nav-container .menu-container .logout-btn .logout-icon svg {
   fill: var(--white);
 }
 
+@media screen and (max-width: 970px) {
+  nav .nav-container .menu-container .logout-btn {
+    text-align: center;
+    padding: 0.15rem;
+  }
+  nav .nav-container .menu-container .logout-btn span {
+    display: none;
+  }
+}
+
 nav .nav-container .menu-container .logout-btn:hover {
   background-color: var(--white);
   color: var(--primary);
@@ -217,6 +240,41 @@ nav .nav-container .menu-container .logout-btn:hover {
 
 nav .nav-container .menu-container .logout-btn:hover .logout-icon svg {
   fill: var(--primary);
+}
+
+nav .nav-container .menu-container .message-btn {
+  display: none;
+}
+
+@media screen and (max-width: 970px) {
+  nav .nav-container .menu-container .message-btn {
+    text-align: center;
+    padding: 0.15rem;
+    width: 3rem;
+    display: block;
+  }
+  nav .nav-container .menu-container .message-btn .message-icon {
+    background-color: var(--primary);
+    padding: 0.25rem;
+    border-radius: 2rem;
+    margin-right: 0.1rem;
+  }
+  nav .nav-container .menu-container .message-btn .message-icon svg {
+    width: 2.5rem;
+    margin-top: 0.25rem;
+    fill: var(--white);
+  }
+}
+
+@media screen and (max-width: 970px) {
+  nav .nav-container .menu-container .message-btn:hover .message-icon {
+    background-color: var(--white);
+    color: var(--primary);
+    border: 2px var(--primary) solid;
+  }
+  nav .nav-container .menu-container .message-btn:hover .message-icon svg {
+    fill: var(--primary);
+  }
 }
 
 nav .nav-container .menu-container .profile .profile-pic {
@@ -480,6 +538,16 @@ main .main-container .middle-container .create-post .create-btn svg {
   max-width: 1.5rem;
 }
 
+main .main-container .middle-container .create-post .create-btn span {
+  display: none;
+}
+
+@media screen and (min-width: 500px) {
+  main .main-container .middle-container .create-post .create-btn span {
+    display: block;
+  }
+}
+
 main .main-container .middle-container .create-post .create-btn:hover {
   background-color: #fff;
   color: var(--primary);
@@ -487,7 +555,13 @@ main .main-container .middle-container .create-post .create-btn:hover {
 }
 
 main .main-container .middle-container .create-post .create-btn:hover svg {
-  fill: #000;
+  fill: var(--primary);
+}
+
+@media screen and (max-width: 970px) {
+  main .main-container .middle-container .create-post {
+    margin-top: 1rem;
+  }
 }
 
 main .main-container .middle-container .feed-container {
@@ -664,14 +738,49 @@ main .main-container .middle-container .caption {
   gap: 0.5rem;
 }
 
-main .main-container .middle-container .top-container {
+main .main-container .middle-container .stories-container-top {
   display: none;
 }
 
 @media screen and (max-width: 970px) {
-  main .main-container .middle-container .top-container {
+  main .main-container .middle-container .stories-container-top {
     display: -webkit-box;
     display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100vw;
+    overflow-x: scroll;
+    gap: 1rem;
+    max-height: -webkit-fit-content;
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+    max-height: 100vh;
+    display: flex;
+    overflow-y: scroll;
+    gap: 0.25rem;
+  }
+  main .main-container .middle-container .stories-container-top .add-story {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: stretch;
+        align-self: stretch;
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    height: 80%;
+    background: var(--primary);
+    color: var(--white);
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -683,8 +792,52 @@ main .main-container .middle-container .top-container {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    width: 100vw;
-    overflow-x: scroll;
+  }
+  main .main-container .middle-container .stories-container-top .add-story svg {
+    width: 1.75rem;
+    fill: var(--white);
+  }
+  main .main-container .middle-container .stories-container-top .add-story .text-normal {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  main .main-container .middle-container .stories-container-top .add-story:hover {
+    background-color: #fff;
+    color: var(--primary);
+    border: 2px var(--primary) solid;
+  }
+  main .main-container .middle-container .stories-container-top .add-story:hover svg {
+    fill: var(--primary);
+  }
+  main .main-container .middle-container .stories-container-top .story {
+    margin: 0.25rem;
+    position: relative;
+    min-width: 6.25rem;
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+  }
+  main .main-container .middle-container .stories-container-top .story .story-pic {
+    max-height: 18vh;
+    aspect-ratio: 1/1;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
+    border-radius: 0.5rem;
+    border: 2px #0e0e0e solid;
+    margin: 0.25rem;
+  }
+  main .main-container .middle-container .stories-container-top .story .text-normal {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  main .main-container .middle-container {
+    width: 95vw;
   }
 }
 
